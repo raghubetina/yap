@@ -8,6 +8,8 @@ class PlacesController < ApplicationController
 
   # GET /places/1
   def show
+    @categorization = Categorization.new
+    @review = Review.new
   end
 
   # GET /places/new

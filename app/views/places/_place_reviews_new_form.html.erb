@@ -1,0 +1,32 @@
+<!-- Form review start -->
+<%= form_with(model: @review, local: true) do |f| %>
+<!-- Form review end -->
+
+  <!-- Label and input for place_id start -->
+  <!-- Input for place_id start -->
+  <%= f.hidden_field :place_id, value: @place.id %>
+  <!-- Input for place_id end -->
+  <!-- Label and input for place_id end -->
+
+  <!-- Label and input for reviewer_id start -->
+  <div class="form-group">
+    <%= f.label :reviewer_id %>
+
+    <!-- Input for reviewer_id start -->
+    <%= f.text_field :reviewer_id, class: "form-control" %>
+    <!-- Input for reviewer_id end -->
+  </div>
+  <!-- Label and input for reviewer_id end -->
+
+  <!-- Label and input for rating start -->
+  <div class="form-group">
+    <%= f.label :rating %>
+
+    <!-- Input for rating start -->
+    <%= f.text_field :rating, class: "form-control" %>
+    <!-- Input for rating end -->
+  </div>
+  <!-- Label and input for rating end -->
+
+  <%= f.submit "Create review", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

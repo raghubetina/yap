@@ -24,7 +24,12 @@ class CategorizationsController < ApplicationController
     @categorization = Categorization.new(categorization_params)
 
     if @categorization.save
-      redirect_to @categorization, notice: 'Categorization was successfully created.'
+      message = 'Categorization was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @categorization, notice: message
+      end
     else
       render :new
     end
