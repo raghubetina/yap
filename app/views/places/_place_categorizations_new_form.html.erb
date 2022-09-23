@@ -8,5 +8,5 @@
     <%= f.collection_select :category_id, Category.all, :id, :to_s, {}, class: "form-control" %>
   </div>
 
-  <%= f.submit "Create categorization", class: "btn btn-block btn-outline-secondary" %>
+  <%= f.submit "Add category to place", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

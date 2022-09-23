@@ -1,50 +1,49 @@
 <div class="card mb-3">
-  <h2 class="card-header h4">
-    Place #<%= place.id %>
+  <h2 class="card-header h4 d-flex justify-content-between">
+    <span><%= place.name %></span>
+
+    <span><%= place.reviews.average(:rating) %>★</span>
   </h2>
-
   <div class="card-body">
-    <dl class="mb-1">
-      <dt>Name</dt>
-      <dd><%= place.name %></dd>
+    <p class="lead">
+      <% @place.categories.order(:name).each do |category| %>
+        <a href="/categories/<%= category.id %>" class="btn btn-secondary">
+          <%= category %>
+        </a>
+      <% end %>
+    </p>
 
-      <dt>Description</dt>
-      <dd><%= place.description %></dd>
+    <p class="lead">
+      <%= place.description %>
+    </p>
 
-      <dt>Image</dt>
-      <dd>
-        <%= cl_image_tag @place.image, class: "img-fluid" %>
-      </dd>
+    <% if place.image.present? %>
+      <%= cl_image_tag @place.image, class: "img-fluid" %>
+    <% end %>
 
-      <dt>Location</dt>
-      <dd>
-        <div>
-          <%= render partial: "places/one_photo_map" %>
-        </div>
-      </dd>
-
-    </dl>
-
-    <div class="row">
-      <div class="col">
-        <%= link_to_show_or_back place, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
-      </div>
-
-      <div class="col">
-        <%= link_to edit_place_url(place), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
-        <% end %>
-      </div>
-
-      <div class="col">
-        <%= link_to place, method: :delete, data: { confirm: "Do you really want to delete this place?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </div>
+    <div>
+      <%= render partial: "places/one_photo_map" %>
     </div>
-  </div>
 
-  <div class="card-footer text-muted">
-    Last updated <%= time_ago_in_words(place.updated_at) %> ago
+    
+    <% if current_user.admin? %>
+      <div class="row mt-3">
+        <div class="col">
+          <%= link_to_show_or_back place, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+        </div>
+
+        <div class="col">
+          <%= link_to edit_place_url(place), class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+        </div>
+
+        <div class="col">
+          <%= link_to place, method: :delete, data: { confirm: "Do you really want to delete this place?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

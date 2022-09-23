@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   def index
     @q = Category.ransack(params[:q])
     @categories = @q.result(distinct: true).includes(:categorizations,
-                                                     :places).page(params[:page]).per(10)
+                                                     :places).page(params[:page]).per(50).order(:name)
   end
 
   def show

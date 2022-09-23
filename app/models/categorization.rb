@@ -11,9 +11,16 @@ class Categorization < ApplicationRecord
 
   # Validations
 
+  validates :category, uniqueness: { scope: :place }
+
   # Scopes
 
   def to_s
     place.to_s
   end
+
+  def category_name
+    category.name
+  end
+  
 end

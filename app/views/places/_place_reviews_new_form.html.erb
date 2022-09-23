@@ -7,8 +7,15 @@
   <div class="form-group">
     <%= f.label :rating %>
 
-    <%= f.text_field :rating, class: "form-control" %>
+    <%= f.select :rating, (1..5).to_a, {}, class: "form-control" %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :body %>
+
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+
 
   <%= f.submit "Create review", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

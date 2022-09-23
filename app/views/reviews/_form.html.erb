@@ -46,5 +46,20 @@
       <% end %>
     <% end %>
   </div>
+  
+  <div class="form-group">
+    <% body_class = "form-control" %>
+    <% body_was_invalid = review.errors.include?(:body) %>
+
+    <%= f.label :body %>
+    <%= f.text_area :body, class: body_class, placeholder: "Enter body" %>
+    <% if body_was_invalid %>
+      <% review.errors.full_messages_for(:body).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

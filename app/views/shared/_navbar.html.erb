@@ -10,6 +10,26 @@
 
     <div class="collapse navbar-collapse" id="collapsible-nav-links">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a href="/reviews" class="nav-link">
+            My reviews
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/places" class="nav-link">
+            All places
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/categories" class="nav-link">
+            Categories
+          </a>
+        </li>
+        
+        <% if false %>
+          
+
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Resources
@@ -32,7 +52,11 @@
             </a>
           </div>
         </li>
+
+      <% end %>
+
       </ul>
+      
       <ul class="navbar-nav">
         <% if current_user.blank? %>
           <li class="nav-item">

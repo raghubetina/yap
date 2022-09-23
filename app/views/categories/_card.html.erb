@@ -1,35 +1,38 @@
 <div class="card mb-3">
   <h2 class="card-header h4">
-    Category #<%= category.id %>
+    <%= category.name %>
   </h2>
 
-  <div class="card-body">
-    <dl class="mb-1">
-      <dt>Name</dt>
-      <dd><%= category.name %></dd>
+  <% if current_user.admin? %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <%= link_to_show_or_back category, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+        </div>
 
-    </dl>
+        <div class="col">
+          <%= link_to edit_category_url(category), class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+        </div>
 
-    <div class="row">
-      <div class="col">
-        <%= link_to_show_or_back category, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
-      </div>
-
-      <div class="col">
-        <%= link_to edit_category_url(category), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
-        <% end %>
-      </div>
-
-      <div class="col">
-        <%= link_to category, method: :delete, data: { confirm: "Do you really want to delete this category?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
+        <div class="col">
+          <%= link_to category, method: :delete, data: { confirm: "Do you really want to delete this category?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="card-footer text-muted">
-    Last updated <%= time_ago_in_words(category.updated_at) %> ago
-  </div>
+  <ul class="list-group list-group-flush">
+    <% @category.places.each do |place| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/places/<%= place.id %>">
+          <%= place %>
+        </a>
+
+      </li>
+    <% end %>
+  </ul>
 </div>

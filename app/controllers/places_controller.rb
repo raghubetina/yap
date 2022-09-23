@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   def index
     @q = Place.ransack(params[:q])
     @places = @q.result(distinct: true).includes(:reviews, :categorizations,
-                                                 :categories, :reviewers).page(params[:page]).per(10)
+                                                 :categories, :reviewers).page(params[:page]).per(10).order(:name)
     @location_hash = Gmaps4rails.build_markers(@places.where.not(location_latitude: nil)) do |place, marker|
       marker.lat place.location_latitude
       marker.lng place.location_longitude

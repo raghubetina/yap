@@ -1,27 +1,17 @@
 <div class="card mb-3">
   <h2 class="card-header h4">
-    Review #<%= review.id %>
+    <%= link_to review.place, review.place %>
   </h2>
 
   <div class="card-body">
     <dl class="mb-1">
-      <dt>Place</dt>
-      <dd>
-        <% if @review.place.present? %>
-          <%= link_to review.place, review.place %>
-        <% end %>
-      </dd>
-
-      <dt>Reviewer</dt>
-      <dd>
-        <% if @review.reviewer.present? %>
-          <%= link_to review.reviewer, review.reviewer %>
-        <% end %>
-      </dd>
-
       <dt>Rating</dt>
       <dd><%= review.rating %></dd>
 
+      <dt>Review</dt>
+      <dd>
+        <%= simple_format review.body %>
+      </dd>
     </dl>
 
     <div class="row">
@@ -31,7 +21,7 @@
 
       <div class="col">
         <% if current_user == @review.reviewer %>
-          <%= link_to edit_review_url(review), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+          <%= link_to edit_review_url(review), class: "btn btn-block btn-outline-secondary" do %>
             <i class="fas fa-edit"></i>
           <% end %>
         <% end %>

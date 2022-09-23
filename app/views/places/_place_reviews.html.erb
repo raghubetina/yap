@@ -9,8 +9,20 @@
 
   <ul class="list-group list-group-flush">
     <% @place.reviews.each do |review| %>
-      <li class="list-group-item d-flex align-items-center justify-content-between">
-        <%= link_to review, review %>
+      <li class="list-group-item">
+        <div class="media">
+          <div class="media-body">
+            <h5 class="mt-0 d-flex justify-content-between">
+              <span><%= review.reviewer.to_s %></span>
+
+              <span>
+                <%= "★" * review.rating %>
+              <span>
+            </h5>
+            <p class="lead"><%= simple_format review.body %></p>
+          </div>
+        </div>
+        
 
         <% if current_user == review.reviewer %>
           <%= link_to review, method: :delete do %>
