@@ -7,6 +7,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :reviewed_places,
+             :through => :reviews,
+             :source => :place
+
   # Validations
 
   validates :first_name, :presence => true

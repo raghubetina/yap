@@ -9,6 +9,10 @@ class Place < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :reviewers,
+             :through => :reviews,
+             :source => :reviewer
+
   has_many   :categories,
              :through => :categorizations,
              :source => :category

@@ -12,6 +12,8 @@ RSpec.describe Place, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:reviewers) }
+
     it { should have_many(:categories) }
 
     end
