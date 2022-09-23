@@ -1,6 +1,9 @@
 class Place < ApplicationRecord
   # Direct associations
 
+  has_many   :categorizations,
+             :dependent => :destroy
+
   has_many   :reviews,
              :dependent => :destroy
 

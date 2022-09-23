@@ -4,6 +4,8 @@ RSpec.describe Categorization, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:place) }
+
     end
 
     describe "InDirect Associations" do
