@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "places#index"
   resources :categorizations
   resources :categories
   resources :reviews
