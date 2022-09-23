@@ -19,7 +19,7 @@ class CategorizationsController < ApplicationController
     @categorization = Categorization.new(categorization_params)
 
     if @categorization.save
-      message = "Categorization was successfully created."
+      message = "Category added."
       if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
         redirect_back fallback_location: request.referer, notice: message
       else
@@ -41,7 +41,7 @@ class CategorizationsController < ApplicationController
 
   def destroy
     @categorization.destroy
-    message = "Categorization was successfully deleted."
+    message = "Category removed."
     if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
       redirect_back fallback_location: request.referer, notice: message
     else
