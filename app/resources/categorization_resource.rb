@@ -12,5 +12,4 @@ class CategorizationResource < ApplicationResource
   belongs_to :place
 
   # Indirect associations
-
 end

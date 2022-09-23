@@ -13,7 +13,7 @@ class Api::V1::CategorizationsController < Api::V1::GraphitiController
     categorization = CategorizationResource.build(params)
 
     if categorization.save
-      render jsonapi: categorization, status: 201
+      render jsonapi: categorization, status: :created
     else
       render jsonapi_errors: categorization
     end
@@ -33,7 +33,7 @@ class Api::V1::CategorizationsController < Api::V1::GraphitiController
     categorization = CategorizationResource.find(params)
 
     if categorization.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: categorization
     end

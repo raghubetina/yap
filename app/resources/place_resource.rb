@@ -19,5 +19,4 @@ class PlaceResource < ApplicationResource
                resource: UserResource
 
   many_to_many :categories
-
 end

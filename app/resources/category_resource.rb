@@ -6,10 +6,9 @@ class CategoryResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :categorizations
+  has_many :categorizations
 
   # Indirect associations
 
   many_to_many :places
-
 end

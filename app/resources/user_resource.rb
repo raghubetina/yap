@@ -16,5 +16,4 @@ class UserResource < ApplicationResource
 
   many_to_many :reviewed_places,
                resource: PlaceResource
-
 end

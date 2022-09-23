@@ -1,23 +1,22 @@
 class User < ApplicationRecord
-  
   include JwtToken
-# Direct associations
+  # Direct associations
 
   has_many   :reviews,
-             :foreign_key => "reviewer_id",
-             :dependent => :destroy
+             foreign_key: "reviewer_id",
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :reviewed_places,
-             :through => :reviews,
-             :source => :place
+             through: :reviews,
+             source: :place
 
   # Validations
 
-  validates :first_name, :presence => true
+  validates :first_name, presence: true
 
-  validates :last_name, :presence => true
+  validates :last_name, presence: true
 
   # Scopes
 
