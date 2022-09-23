@@ -9,6 +9,8 @@ class PlaceResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :categorizations
+
   has_many   :reviews
 
   # Indirect associations
