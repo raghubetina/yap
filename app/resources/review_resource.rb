@@ -8,6 +8,9 @@ class ReviewResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :reviewer,
+             resource: UserResource
+
   # Indirect associations
 
 end
