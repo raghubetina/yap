@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   def index
-    @reviews = Review.all
+    @reviews = current_user.reviews.page(params[:page]).per(10)
   end
 
   # GET /reviews/1
