@@ -15,6 +15,9 @@ class PlaceResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :reviewers,
+               resource: UserResource
+
   many_to_many :categories
 
 end

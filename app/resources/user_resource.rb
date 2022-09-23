@@ -14,4 +14,7 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :reviewed_places,
+               resource: PlaceResource
+
 end
