@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Place</dt>
       <!-- Display place_id start -->
-      <dd><%= categorization.place_id %></dd>
+      <dd>
+        <% if @categorization.place.present? %>
+          <%= link_to categorization.place, categorization.place %>
+        <% end %>
+      </dd>
       <!-- Display place_id end -->
 
       <dt>Category</dt>
       <!-- Display category_id start -->
-      <dd><%= categorization.category_id %></dd>
+      <dd>
+        <% if @categorization.category.present? %>
+          <%= link_to categorization.category, categorization.category %>
+        <% end %>
+      </dd>
       <!-- Display category_id end -->
 
     </dl>
