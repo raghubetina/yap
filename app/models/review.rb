@@ -1,6 +1,10 @@
 class Review < ApplicationRecord
   # Direct associations
 
+  belongs_to :reviewer,
+             :class_name => "User",
+             :counter_cache => true
+
   # Indirect associations
 
   # Validations
