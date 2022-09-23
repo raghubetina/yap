@@ -9,6 +9,10 @@ class Place < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :categories,
+             :through => :categorizations,
+             :source => :category
+
   # Validations
 
   validates :name, :presence => true

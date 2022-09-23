@@ -6,6 +6,10 @@ class Category < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :places,
+             :through => :categorizations,
+             :source => :place
+
   # Validations
 
   validates :name, :presence => true
