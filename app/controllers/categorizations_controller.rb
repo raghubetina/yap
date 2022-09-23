@@ -3,7 +3,7 @@ class CategorizationsController < ApplicationController
 
   # GET /categorizations
   def index
-    @categorizations = Categorization.all
+    @categorizations = Categorization.page(params[:page]).per(10)
   end
 
   # GET /categorizations/1
