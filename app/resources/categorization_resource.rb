@@ -7,6 +7,8 @@ class CategorizationResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :category
+
   belongs_to :place
 
   # Indirect associations
