@@ -10,26 +10,20 @@
   <ul class="list-group list-group-flush">
     <% @place.reviews.each do |review| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to review, review %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <% if current_user == review.reviewer %>
           <%= link_to review, method: :delete do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="place_reviews_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "places/place_reviews_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

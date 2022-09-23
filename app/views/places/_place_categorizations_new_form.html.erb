@@ -1,22 +1,12 @@
-<!-- Form categorization start -->
 <%= form_with(model: @categorization, local: true) do |f| %>
-<!-- Form categorization end -->
 
-  <!-- Label and input for place_id start -->
-  <!-- Input for place_id start -->
   <%= f.hidden_field :place_id, value: @place.id %>
-  <!-- Input for place_id end -->
-  <!-- Label and input for place_id end -->
 
-  <!-- Label and input for category_id start -->
   <div class="form-group">
     <%= f.label :category_id %>
 
-    <!-- Input for category_id start -->
     <%= f.collection_select :category_id, Category.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for category_id end -->
   </div>
-  <!-- Label and input for category_id end -->
 
   <%= f.submit "Create categorization", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

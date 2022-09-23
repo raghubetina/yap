@@ -6,22 +6,18 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Place</dt>
-      <!-- Display place_id start -->
       <dd>
         <% if @categorization.place.present? %>
           <%= link_to categorization.place, categorization.place %>
         <% end %>
       </dd>
-      <!-- Display place_id end -->
 
       <dt>Category</dt>
-      <!-- Display category_id start -->
       <dd>
         <% if @categorization.category.present? %>
           <%= link_to categorization.category, categorization.category %>
         <% end %>
       </dd>
-      <!-- Display category_id end -->
 
     </dl>
 
@@ -30,21 +26,17 @@
         <%= link_to_show_or_back categorization, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link categorization start -->
       <div class="col">
         <%= link_to edit_categorization_url(categorization), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link categorization end -->
 
-      <!-- Delete link categorization start -->
       <div class="col">
         <%= link_to categorization, method: :delete, data: { confirm: "Do you really want to delete this categorization?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link categorization end -->
     </div>
   </div>
 
