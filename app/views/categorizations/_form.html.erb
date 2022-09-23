@@ -1,0 +1,57 @@
+<% was_validated = categorization.errors.any? %>
+
+<%= form_with(model: categorization, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for place_id start -->
+  <div class="form-group">
+    <% place_class = "form-control" %>
+    <% place_was_invalid = categorization.errors.include?(:place) %>
+
+    <% if was_validated %>
+      <% if place_was_invalid %>
+        <% place_class << " is-invalid" %>
+      <% else %>
+        <% place_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :place_id %>
+    <!-- Input for place_id start -->
+    <%= f.number_field :place_id, class: place_class, placeholder: "Enter place" %>
+    <!-- Input for place_id end -->
+    <% if place_was_invalid %>
+      <% categorization.errors.full_messages_for(:place).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for place_id end -->
+  <!-- Label and input for category_id start -->
+  <div class="form-group">
+    <% category_class = "form-control" %>
+    <% category_was_invalid = categorization.errors.include?(:category) %>
+
+    <% if was_validated %>
+      <% if category_was_invalid %>
+        <% category_class << " is-invalid" %>
+      <% else %>
+        <% category_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :category_id %>
+    <!-- Input for category_id start -->
+    <%= f.number_field :category_id, class: category_class, placeholder: "Enter category" %>
+    <!-- Input for category_id end -->
+    <% if category_was_invalid %>
+      <% categorization.errors.full_messages_for(:category).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for category_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
